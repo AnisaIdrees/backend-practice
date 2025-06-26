@@ -6,33 +6,59 @@ const { MongoClient } = require('mongodb');
 const url = "mongodb+srv://haider:haider12345@practice.rdw3fgs.mongodb.net/?retryWrites=true&w=majority";
 
 const databaseName = 'e-com'
-
 const client = new MongoClient(url)
 
-const dbConnection = async () => {
 
 
-    try {
-        
+
+const dbConnection = async()=>{
+try {
     const connection = await client.connect();
-    const db = connection.db(databaseName);
-    const collectionRef = db.collection('users')
+    const db = connection.db(databaseName)
+    const collectionRef =db.collection('users')
 
-    const result = await collectionRef.insertOne({
-        name: 'alishba',
-        age: 20,
+    const result =await collectionRef.insertOne({
 
+        name:'Aneesa Idrees',
+        class:11,
+        age:10
     })
-    console.log('✅ Data stored in MongoDB:', result);
 
-    }
-     catch (error) {
-
-        console.log('❌ MongoDB Connection Error:', err);
-        
-    }
+    console.log('data inserted' , result);
+    
+} catch (error) {
+    console.log('database connection error', error);
+    
 }
+}
+
 dbConnection()
+
+
+
+
+// const dbConnection = async () => {
+
+//     try {        
+//     const connection = await client.connect();
+//     const db = connection.db(databaseName);
+//     const collectionRef = db.collection('users')
+
+//     const result = await collectionRef.insertOne({
+//         name: 'alishba',
+//         age: 20,
+
+//     })
+//     console.log('✅ Data stored in MongoDB:', result);
+
+//     }
+//      catch (error) {
+
+//         console.log('❌ MongoDB Connection Error:', err);
+        
+//     }
+// }
+// dbConnection()
 
 
 
