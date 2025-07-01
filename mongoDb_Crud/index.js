@@ -11,3 +11,21 @@ app.get('/', (req , res)=>{
 })
 app.listen(Port , ()=>console.log('server is running on port '));
 
+
+
+const createUser = async()=>{
+try {
+ const userRef =(await db()).collection('products');
+    const result =await userRef.insertOne({
+        name:'pizza',
+        quantity:5,
+        price:'3998'
+    })
+    console.log('user inserted >>>>>>>>>' ,result);
+    
+} catch (error) {
+   console.log('database error', error);
+    
+} 
+}
+createUser()
